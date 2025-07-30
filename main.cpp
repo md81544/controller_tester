@@ -2,13 +2,11 @@
 #include <cmath>
 #include <format>
 #include <iostream>
+#include <optional>
 #include <vector>
-
-sf::Font font;
 
 void setTextProperties(sf::Text& txt, float x, float y)
 {
-    txt.setFont(font);
     txt.setCharacterSize(22);
     txt.setFillColor(sf::Color::Green);
     txt.setPosition({ x, y });
@@ -16,34 +14,31 @@ void setTextProperties(sf::Text& txt, float x, float y)
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640, 480), "Controller Tester");
+    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "Controller Tester");
     window.setFramerateLimit(24);
-    if (!font.loadFromFile("DroidSansMono.ttf")) {
-        std::cout << "Couldn't load font file\n";
-        return 2;
-    }
+    const sf::Font font("DroidSansMono.ttf");
 
-    sf::Text txtAxisX;
+    sf::Text txtAxisX(font);
     setTextProperties(txtAxisX, 10, 10);
-    sf::Text txtAxisY;
+    sf::Text txtAxisY(font);
     setTextProperties(txtAxisY, 10, 40);
-    sf::Text txtAxisZ;
+    sf::Text txtAxisZ(font);
     setTextProperties(txtAxisZ, 10, 70);
-    sf::Text txtAxisR;
+    sf::Text txtAxisR(font);
     setTextProperties(txtAxisR, 10, 100);
-    sf::Text txtAxisU;
+    sf::Text txtAxisU(font);
     setTextProperties(txtAxisU, 10, 130);
-    sf::Text txtAxisV;
+    sf::Text txtAxisV(font);
     setTextProperties(txtAxisV, 10, 160);
-    sf::Text txtAxisPovX;
+    sf::Text txtAxisPovX(font);
     setTextProperties(txtAxisPovX, 10, 190);
-    sf::Text txtAxisPovY;
+    sf::Text txtAxisPovY(font);
     setTextProperties(txtAxisPovY, 10, 220);
 
     std::vector<sf::Text> vecBtn;
     unsigned int yPos = 10;
     for (unsigned int n = 0; n < sf::Joystick::getButtonCount(0); ++n) {
-        sf::Text t;
+        sf::Text t(font);
         setTextProperties(t, 360, yPos);
         vecBtn.push_back(t);
         yPos += 30;
@@ -52,8 +47,7 @@ int main()
     const float deadZone = 20.f;
 
     while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
+        while (const std::optional event = window.pollEvent()) {
             if (sf::Joystick::isConnected(0)) {
                 for (unsigned int n = 0; n < sf::Joystick::getButtonCount(0); ++n) {
                     if (sf::Joystick::isButtonPressed(0, n)) {
@@ -130,7 +124,7 @@ int main()
                 std::cout << "No controller is connected\n";
                 return 1;
             }
-            if (event.type == sf::Event::Closed) {
+            if (event->getIf<sf::Event::Closed>()){
                 window.close();
             }
         }
