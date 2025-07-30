@@ -6,4 +6,5 @@ Quick-and-dirty SFML application for showing the status of the first game contro
 
 ### Requirements
 
-Assuming you have a working clang++, just sfml. For mac, it's `brew install sfml`.
+Assuming you have a working clang++, just sfml. For mac, it's `brew install sfml` NOTE this has
+been updated to use SFML version 3 so will not compile if you have SFML 2.6.x installed.
