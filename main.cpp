@@ -127,6 +127,11 @@ int main()
             if (event->getIf<sf::Event::Closed>()){
                 window.close();
             }
+            if (event->getIf<sf::Event::KeyPressed>()) {
+                if (event->getIf<sf::Event::KeyPressed>()->code == sf::Keyboard::Key::Escape) {
+                    window.close();
+                }
+            }
         }
 
         window.clear();
