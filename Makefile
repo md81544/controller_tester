@@ -2,9 +2,9 @@ PROJECT=controller_tester
 SOURCES=$(shell ls *cpp)
 INCPATHS=
 LIBPATHS=
-LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
-CFLAGS=-std=c++20 -c -Wall -Wextra -Wpedantic -Werror
-CC=clang++
+LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -lfmt
+CFLAGS=-std=c++23 -c -Wall -Wextra -Wpedantic -Werror
+CC=g++
 
 # Automatic generation of some important lists
 OBJECTS=$(SOURCES:.cpp=.o)

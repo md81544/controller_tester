@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
-#include <format>
+#include <fmt/format.h>
 #include <iostream>
 #include <optional>
 #include <vector>
@@ -51,15 +51,15 @@ int main()
             if (sf::Joystick::isConnected(0)) {
                 for (unsigned int n = 0; n < sf::Joystick::getButtonCount(0); ++n) {
                     if (sf::Joystick::isButtonPressed(0, n)) {
-                        vecBtn[n].setString(std::format("Button {:2} pressed", n));
+                        vecBtn[n].setString(fmt::format("Button {:2} pressed", n));
                     } else {
-                        vecBtn[n].setString(std::format("Button {:2}", n));
+                        vecBtn[n].setString(fmt::format("Button {:2}", n));
                     }
                 }
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::X)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X);
                     if (std::abs(value) > deadZone) {
-                        txtAxisX.setString(std::format("Axis    X: {:.1f}", value));
+                        txtAxisX.setString(fmt::format("Axis    X: {:.1f}", value));
                     } else {
                         txtAxisX.setString("Axis    X: centred");
                     }
@@ -67,7 +67,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::Y)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y);
                     if (std::abs(value) > deadZone) {
-                        txtAxisY.setString(std::format("Axis    Y: {:.1f}", value));
+                        txtAxisY.setString(fmt::format("Axis    Y: {:.1f}", value));
                     } else {
                         txtAxisY.setString("Axis    Y: centred");
                     }
@@ -75,7 +75,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::Z)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z);
                     if (std::abs(value) > deadZone) {
-                        txtAxisZ.setString(std::format("Axis    Z: {:.1f}", value));
+                        txtAxisZ.setString(fmt::format("Axis    Z: {:.1f}", value));
                     } else {
                         txtAxisZ.setString("Axis    Z: centred");
                     }
@@ -83,7 +83,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::R)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::R);
                     if (std::abs(value) > deadZone) {
-                        txtAxisR.setString(std::format("Axis    R: {:.1f}", value));
+                        txtAxisR.setString(fmt::format("Axis    R: {:.1f}", value));
                     } else {
                         txtAxisR.setString("Axis    R: centred");
                     }
@@ -91,7 +91,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::U)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::U);
                     if (std::abs(value) > deadZone) {
-                        txtAxisU.setString(std::format("Axis    U: {:.1f}", value));
+                        txtAxisU.setString(fmt::format("Axis    U: {:.1f}", value));
                     } else {
                         txtAxisU.setString("Axis    U: centred");
                     }
@@ -99,7 +99,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::V)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V);
                     if (std::abs(value) > deadZone) {
-                        txtAxisV.setString(std::format("Axis    V: {:.1f}", value));
+                        txtAxisV.setString(fmt::format("Axis    V: {:.1f}", value));
                     } else {
                         txtAxisV.setString("Axis    V: centred");
                     }
@@ -107,7 +107,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::PovX)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovX);
                     if (std::abs(value) > deadZone) {
-                        txtAxisPovX.setString(std::format("Axis PovX: {:.1f}", value));
+                        txtAxisPovX.setString(fmt::format("Axis PovX: {:.1f}", value));
                     } else {
                         txtAxisPovX.setString("Axis PovX: centred");
                     }
@@ -115,7 +115,7 @@ int main()
                 if (sf::Joystick::hasAxis(0, sf::Joystick::Axis::PovY)) {
                     float value = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovY);
                     if (std::abs(value) > deadZone) {
-                        txtAxisPovY.setString(std::format("Axis PovY: {:.1f}", value));
+                        txtAxisPovY.setString(fmt::format("Axis PovY: {:.1f}", value));
                     } else {
                         txtAxisPovY.setString("Axis PovX: centred");
                     }
