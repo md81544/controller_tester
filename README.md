@@ -6,5 +6,9 @@ Quick-and-dirty SFML application for showing the status of the first game contro
 
 ### Requirements
 
-Assuming you have a working clang++, just sfml. For mac, it's `brew install sfml` NOTE this has
-been updated to use SFML version 3 so will not compile if you have SFML 2.6.x installed.
+**libfmt** (using fmt::format as Raspberry Pi's g++ at the time of writing doesn't support `std::format`)
+
+Assuming you have a working clang++, the only other requirement is SFML **3**. For mac,
+install with Homebrew (assuming you have that installed): `brew install sfml`
+At the time of writing, SFML 3.x needs to be manually built and installed on a Raspberry Pi as the
+apt repos still only contain SFML 2.6.x.
