@@ -117,7 +117,7 @@ int main()
                     if (std::abs(value) > deadZone) {
                         txtAxisPovY.setString(fmt::format("Axis PovY: {:.1f}", value));
                     } else {
-                        txtAxisPovY.setString("Axis PovX: centred");
+                        txtAxisPovY.setString("Axis PovY: centred");
                     }
                 }
             } else {
